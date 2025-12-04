@@ -1,6 +1,6 @@
 # Etapa 1: Construção (Build)
 FROM maven:3.8.5-openjdk-17 AS build
-COPY . .
+COPY src/main/java/br/com/taskdash/controller .
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Execução (Run)
