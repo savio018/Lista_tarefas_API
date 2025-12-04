@@ -7,6 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tarefas")
+@CrossOrigin(origins = "*")
 public class ListaTarefasController {
 
     private final ListatarefasService service;
@@ -24,11 +25,11 @@ public class ListaTarefasController {
         return service.criarTarefa(tarefa);
     }
 
-    @PutMapping("/{Id}/concluir")
+    @PutMapping("/{id}/concluir")
     public ListaTarefas concluirTarefa(@PathVariable Long id){
     return service.concluirTarefa(id);}
 
-    @DeleteMapping("/{Id}")
+    @DeleteMapping("/{id}")
     public void deletarTarefa(@PathVariable Long id){
         service.excluirTarefa(id);
     }
