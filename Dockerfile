@@ -1,5 +1,5 @@
 # Etapa 1: Build
-FROM maven:3.9.9-eclipse-temurin-21 AS build   # imagem com JDK 21
+FROM maven:3.9.9-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
@@ -9,7 +9,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Execução
-FROM eclipse-temurin:21-jdk-alpine   # runtime também em 21
+FROM eclipse-temurin:21-jdk-alpine
 
 WORKDIR /app
 
