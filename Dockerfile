@@ -1,10 +1,11 @@
 # Etapa 1: Construção (Build)
+# Etapa 1: Construção
 FROM maven:3.8.5-openjdk-17 AS build
-COPY src/main/java/br/com/taskdash/controller .
+COPY . .
 RUN mvn clean package -DskipTests
 
-# Etapa 2: Execução (Run)
-FROM openjdk:17-jdk-slim
+# Etapa 2: Execução (Usando eclipse-temurin que é mais estável)
+FROM eclipse-temurin:17-jdk-alpine
 COPY --from=build /target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
